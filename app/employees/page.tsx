@@ -46,7 +46,7 @@ export default function Employees() {
   const columns = [
     {
       name: "ID",
-      selector: (row: Employee) => employees.indexOf(row) + 1, // Sequential numbering
+      selector: (row: Employee) => employees.indexOf(row) , // Sequential numbering
       sortable: true,
     },
     { name: "Name", selector: (row: Employee) => row.name, sortable: true },
@@ -61,21 +61,23 @@ export default function Employees() {
   return (
     <div className="max-w-4xl mx-auto p-6 mt-4 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Employee DataTable</h2>
-      <div className="mb-4 flex gap-2">
-        <input
-          type="text"
-          placeholder="Search by name..."
-          className="w-full p-2 border rounded"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <input
+      <div className="mb-4 flex justify-between gap-2">
+        <div>   <input
           type="number"
           min="1"
           placeholder="Go to page..."
           className="p-2 border rounded w-24"
           onChange={(e) => handlePageChange(Number(e.target.value))}
-        />
+        /></div>
+        <div>   <input
+          type="text"
+          placeholder="Search by name..."
+          className="w-full p-2 border rounded"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        /></div>
+     
+     
       </div>
       <DataTable
         columns={columns}
